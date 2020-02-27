@@ -1,0 +1,30 @@
+Table videos {
+  id "unsigned bigint"  [pk, increment] // auto-increment
+  author_id "unsigned bigint" [ref: > authors.id]
+  name varchar (127)
+  decscription text
+  code varchar 
+  created_at datetime
+  updated_at datetime
+  genre_id int
+}
+
+Table authors {
+  id "unsigned bigint"  [pk, increment] // auto-increment
+  name varchar (127)
+}
+
+Table genres {
+  id "unsigned bigint"  [pk, increment] // auto-increment
+  name varchar (127)
+}
+
+Table author_genre {
+  author_id "unsigned bigint"  [pk, ref: > authors.id] // auto-increment
+  genre_id "unsigned bigint"  [pk, ref: > genres.id] // auto-increment
+}
+
+Table genre_video {
+  genre_id "unsigned bigint"  [pk, ref: > genres.id] // auto-increment
+  video_id "unsigned bigint"  [pk, ref: > videos.id] // auto-increment
+}
